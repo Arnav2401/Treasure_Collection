@@ -144,6 +144,8 @@ function draw() {
      runner.y=225;
      runner.scale=1;
      
+     text("Press 'R' To Restart",155,275)
+     
      if (keyDown("r")){
        restart()
      }
