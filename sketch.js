@@ -11,7 +11,7 @@
   var PLAY = 1;
   var END = 2;
   var gameState = PLAY;
-
+  var highScore=0;
 
 function preload(){
   
@@ -66,7 +66,7 @@ function draw() {
   textSize(15)
   fill("black")
   text ("Collection = " + collection,300,15);
-  
+  text ("High Score = " + highScore,15,15);
   
   if (gameState===PLAY){
     if(mouseX>20 && mouseX<430){
@@ -143,6 +143,15 @@ function draw() {
      runner.x=225;
      runner.y=225;
      runner.scale=1;
+     
+     if (keyDown("r")){
+       restart()
+     }
+     
+     if (collection>highScore){
+         highScore=collection
+        }
+     
     }
   
 
@@ -240,3 +249,18 @@ function Ruby (){
 }
   
 //}
+
+
+function restart(){
+  runner.changeAnimation("Runner");
+  collection=0;
+  runner.scale = 0.05;
+  road.setVelocity(0,5)
+  runner.y=400;
+  ruby_group.destroyEach();
+  diamond_group.destroyEach();
+  jwell_group.destroyEach();
+  cash_group.destroyEach();
+  sword_group.destroyEach();
+  gameState = PLAY
+}
